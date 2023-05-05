@@ -36,9 +36,9 @@ app.use('/api', middleRouter);
 //   })
 // })
 
-app.listen(4000, function() {
-  console.log('listening on port 40001');
-})
+// app.listen(4000, function() {
+//   console.log('listening on port 4000');
+// })
 
 
 io.on('connection', socket => {
@@ -72,6 +72,6 @@ io.on('connection', socket => {
 
 
 //  ws.initConn(); 
-server.listen(40001, function() {
+server.listen(4000, function() {
   console.log('listening on port 40001');
 })

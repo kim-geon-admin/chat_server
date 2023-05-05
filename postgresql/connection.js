@@ -4,7 +4,8 @@ const PostgreClient = require('pg');
 
 const connection = new PostgreClient.Pool({
     user: "postgres",
-    host: "localhost",
+    host: "127.0.0.1",
+   //host: "host.docker.internal",
     database: "postgres",
     password: "1234",
     port: 5432

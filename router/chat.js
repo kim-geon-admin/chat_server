@@ -11,8 +11,10 @@ app.use(cors({
 exports.initConn = function(socket,io){ 
    
     return socket.on('message', (msgObj) => {
+
+      console.log(msgObj);
             console.log(` message ${msgObj.message}`);
-            console.log(` roomid ${msgObj.rommId}`)
+            console.log(` roomid ${msgObj.rommId}`);
     
             //일반 전체 메세지 보내기
             //io.emit('message', (msgObj.message))
