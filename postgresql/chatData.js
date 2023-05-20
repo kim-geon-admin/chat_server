@@ -106,7 +106,7 @@ const insertChatRomm = function(request,response){
                     console.log('11111',room_id,member);
                     let paramArr = [room_id,member];
                     let query =   ' INSERT INTO public.tb_chat_020(room_id, user_id)  ';
-                        query +=  '  VALUES ($1, $2) ';
+                        query +=  '  VALUES ($1, $2) '; 
                     await connection.query(query,paramArr); 
                 });
 
