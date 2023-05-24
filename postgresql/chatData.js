@@ -108,7 +108,7 @@ const insertChatRomm = function(request,response){
                     let query =   ' INSERT INTO public.tb_chat_020(room_id, user_id)  ';
                         query +=  '  VALUES ($1, $2) '; 
                     await connection.query(query,paramArr); 
-                });
+                }); 
 
             }
            
