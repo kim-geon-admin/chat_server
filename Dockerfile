@@ -1,4 +1,5 @@
-From node:latest
+#From node:latest
+From node:16-alpine
 
 LABEL autor="kg"
 

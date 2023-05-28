@@ -1,5 +1,6 @@
 
 const connection = require('./connection');
+const session = require('../session/sessionProcess.js');
 
 exports.selectUser = function(request,response){ 
 
@@ -15,6 +16,7 @@ exports.selectUser = function(request,response){
     console.log('사용자 인증 완료');
 
     if(results.rowCount > 0){
+      session.loginSession(request,response);
       response.send('success');
     }else response.send('fail');
     

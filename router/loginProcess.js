@@ -16,18 +16,14 @@ router.get('/getLoginInfo', function(req, res, next) {
   console.log('getLoginInfo js 수행 됩니다', req.body,req.query);
   let param = req.query;
 
-  // if('master' == param.id && '1234' == param.password){
-  //   res.send('sucess');  
-  // }else if('master2' == param.id && '1234' == param.password){
-  //   res.send('sucess');  
-  // }else{
-  //   res.send('fail');  
-  // }
+  
   
   executeQueryData.selectUser(req,res);
 
+ 
 
 });
+
 
 
 
