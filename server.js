@@ -5,9 +5,15 @@ const cors = require('cors');
 const ws = require('./router/chat');
 const server = require('http').createServer(app);
 require("dotenv").config();
+
+//logger
+const logger = require('./logger');
+
 //redis
 const redisClient = require('./redis/redisConnection');
 const session = require('./session/sessionInit');
+
+
 
 //redis 연결
 session.init(app,redisClient);
@@ -79,4 +85,6 @@ io.on('connection', socket => {
 //  ws.initConn(); 
 server.listen(4000, function() {
   console.log('listening on port 4000');
+  logger.info('ddd');
 })
+ 
