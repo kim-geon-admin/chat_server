@@ -9,16 +9,25 @@ exports.init = function(app,redisClient){
 
  app.use(
   session({
+
     secret:'chat',
-    cookie:{ expires : 500000},
+    cookie:{ 
+      expires : 50000000 //ms세컨드 단위
+    },
     //redis server config
     store : new RedisStore({ 
       client:redisClient,
-      ttl:500000 ,//redis 삭제 시간
+      ttl:50000000 ,//redis 삭제 시간
       prefix:'session',
     }),
-    saveUninitialized: false,
-    resave : false
+    saveUninitialized: true, //session에 아무런 작업이 이루어지지 않은 상황을 말합니다.
+    resave : true,
+    rolling : true
+    /*
+   saveUninitialized: false,
+    resave : false,
+    
+    */
   }));
 }
 

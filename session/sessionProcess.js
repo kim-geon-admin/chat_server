@@ -10,11 +10,11 @@ exports.loginSession = function(req,res){
     * req.session 에 넣는 거 자체만으로도
     * redis에 담긴다
     */
-    console.log(req.session);
+   // console.log(req.session);
     req.session.key = req.query.id;
     req.session.name = req.query.id;
    // redisClient.set('_'+req.query.id,req.session.key);
-    console.log('session 인증 완료');
+    console.log('session 발급 완료');
    
   }
 
@@ -23,7 +23,8 @@ exports.loginSession = function(req,res){
     
     //세션인증완료
     if(req.session.key){
-     // console.log('session key 인증완료',req.session.key);
+      console.log('session key 인증완료',req.session.key);
+ 
       next();
     }else{
       console.log('session 인증실패',req.session.key);

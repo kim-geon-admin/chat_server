@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const executeQueryData = require('../postgresql/chatData');
+// const executeQueryData = require('../postgresql/chatData'); 기존 쿼리방식
+const executeQueryData = require('../sequelize/dao/seqChatData');
 
 const app = express();
 const bodyParser = require('body-parser');

@@ -12,7 +12,7 @@ exports.selectUser = function(request,response){
   connection.query(query,paramArr, function (error, results, fields) {
     
     if (error) throw error;
-
+    //bcrypt
     console.log('사용자 인증 완료');
 
     if(results.rowCount > 0){

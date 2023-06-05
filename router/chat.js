@@ -1,7 +1,9 @@
 const app = require('express')()
 const server = require('http').createServer(app)
 const cors = require('cors')
-const executeQueryData = require('../postgresql/chatData');
+//const executeQueryData = require('../postgresql/chatData'); //기존 쿼리방식
+const executeQueryData = require('../sequelize/dao/seqChatData');
+
 
 app.use(cors({
   origin: true,

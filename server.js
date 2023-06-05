@@ -6,6 +6,7 @@ const ws = require('./router/chat');
 const server = require('http').createServer(app);
 require("dotenv").config();
 
+var sequelize = require('./sequelize/seqConnection.js');
 //logger
 const logger = require('./logger');
 
@@ -17,6 +18,7 @@ const session = require('./session/sessionInit');
 
 //redis 연결
 session.init(app,redisClient);
+
 
 
 

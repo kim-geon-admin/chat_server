@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const executeQueryData = require('../postgresql/loginData');
+
+//const executeQueryData = require('../postgresql/loginData'); 기존 쿼리방식
+const executeQueryData = require('../sequelize/dao/seqLoginData'); //ORM
+
 
 const app = express();
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 /* GET home page. */
@@ -16,16 +20,10 @@ router.get('/getLoginInfo', function(req, res, next) {
   console.log('getLoginInfo js 수행 됩니다', req.body,req.query);
   let param = req.query;
 
-  
-  
+
   executeQueryData.selectUser(req,res);
 
- 
 
-});
-
-
-
-
+})
 
 module.exports = router;

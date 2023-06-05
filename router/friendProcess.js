@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const executeQueryData = require('../postgresql/friendData');
+//const executeQueryData = require('../postgresql/friendData');기존 쿼리방식
+const executeQueryData = require('../sequelize/dao/seqFriendData'); //ORM
 
 const app = express();
 const bodyParser = require('body-parser');
