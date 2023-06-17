@@ -21,14 +21,22 @@ exports.initConn = function(socket,io){
              * 대화방 생성 후 최초 메세지 인지 확인 
              * 최초일 경우 chat020 detail 데이터 생성 
              */
-            executeQueryData.selectChatDetailRoom(msgObj);
+          //  executeQueryData.selectChatDetailRoom(msgObj);
+
+
+           //특정방 사용자에게만 보내기
+           io.to(msgObj.room_id).emit( 'message', msgObj);
+           
+               /**
+             * message history를 redis에 기록하는 메소드 호출
+             */
+               executeQueryData.setMsgtoRedis(msgObj);
 
 
             //일반 전체 메세지 보내기
             //io.emit('message', (msgObj.message))
             
-            //특정방 사용자에게만 보내기
-             io.to(msgObj.room_id).emit( 'message', msgObj);
+           
     
   })
       

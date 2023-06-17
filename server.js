@@ -86,7 +86,7 @@ io.on('connection', socket => {
 
 //  ws.initConn(); 
 server.listen(4000, function() {
-  console.log('listening on port 4000');
-  logger.info('ddd');
+  //console.log('listening on port 4000');
+  logger.info('listening on port 4000');
 })
  
