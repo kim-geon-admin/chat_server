@@ -38,6 +38,14 @@ router.get('/getChatListInfo', function(req, res, next) {
 
 });
 
+router.get('/getDetailContents', function(req, res, next) {
+  //console.log('2',res);
+
+  console.log('getDetailContents  select 수행 됩니다');
+  executeQueryData.selectDetailContents(req,res);
+
+
+});
 
 
 module.exports = router;

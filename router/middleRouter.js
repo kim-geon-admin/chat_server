@@ -10,12 +10,15 @@ try{
     const friendInfo = require('./friendProcess.js');
     const chatInfo = require('./chatProcess.js');
     const exitInfo = require('./exitProcess.js');
+    const alarm = require('./alarmProcess.js');
 
         //router.use('/chat', chat);
     router.use('/logIn', userInfo);
     router.use('/friend',session.chkSession ,friendInfo);
     router.use('/chat',session.chkSession, chatInfo);
     router.use('/exit', exitInfo);
+    router.use('/alarm', alarm);
+
 }catch(e){
     console.log(e);
 }

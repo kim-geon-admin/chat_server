@@ -40,9 +40,7 @@ exports.selectChatRomm =  function(request,response){
           }
     
       }).catch((error)=>{logger.error(error)});
-    
-   
-   
+
 }
 
 
@@ -177,10 +175,51 @@ const insertChatDetailRomm = async function(room_id){
 
  }).catch((error)=>{logger.error(error)});
 
+}
 
 
-
+/**
+ *  대화방 입장시 지난 대화 이력 조회
+ * 
+ */
+exports.selectDetailContents = function(request,response){ 
+    
+  Chat010.findOne({
+    where:{
+      room_id:request.query.room_id,
+    },  
+    raw:true
+    })
+  .then(async (result) => {
   
+    console.log(result);
+    logger.info('상세 대화 내력 조회 성공');
+    //dataValues
+   
+    if(result.contents != '' && result.contents != null){
+        
+      //db에서 가져온 대화
+      let dbMsg = JSON.parse(result.contents);
+
+      //redis에서 가져온 대화
+      let redisMsg = await redisClient.get(`room_${request.query.room_id}`);
+
+      if(redisMsg != null){
+        let newRedisMsg = JSON.parse(redisMsg);
+        let totalMsg =[...dbMsg,...newRedisMsg];
+
+        response.send(totalMsg);
+      }else{
+        response.send(dbMsg);
+      }
+
+     
+
+
+      }else response.send('fail');
+
+  }).catch((error)=>{logger.error(error)});
+
 }
 
 
@@ -224,8 +263,6 @@ exports.setMsgtoRedis = async function(msgObj){
       await redisClient.set(`room_${msgObj.room_id}`,JSON.stringify([msgObj]));
     }
    
-   
-   // console.log('여기 탄다2222',redisMsg); 
   }catch(error){
     logger.error(error);
   }

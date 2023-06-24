@@ -15,6 +15,8 @@ exports.selectUser = function(request,response){
   .then((user) => {
     logger.info(`사용자 로그인 성공 ${user.dataValues.user_id} `);
     console.log(user);
+    this.setLoginUser(request.query.id,'Y');
+
     if(user.dataValues.user_id != ''){
         session.loginSession(request,response);
         response.send('success');
@@ -25,3 +27,20 @@ exports.selectUser = function(request,response){
   }
 
 
+  exports.setLoginUser = function(id,loginTp){ 
+    
+    Master.update(
+      //update할 칼럼 정보
+      {
+       is_login : loginTp
+      },
+      //where절 
+      {
+       where : { user_id : id}
+      })
+    .then((user) => {
+   
+  
+    }).catch((error)=>{logger.error(error)});
+    
+    }
