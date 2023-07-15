@@ -35,7 +35,7 @@ const logger = require('../logger');
       try{
           this.pubClient.publish(channel+'', message);
           console.log('대 성공',message);
-      }catch(e) {console.log('[publish]',e);}
+      }catch(e) {console.log('[publish]',e);} 
       
     
     }
@@ -47,12 +47,12 @@ const logger = require('../logger');
        await this.subClient.subscribe(channel+'', (message) => {
           console.log('채널 탄다111 ');
         //  console.log('message : ', message);
-          console.log('채널 탄다 ');
+          console.log('채널 탄다 ',channel);
            let msgObj =   JSON.parse(message)
-           io.to(msgObj.room_id).emit( 'message',msgObj);
+           io.to(channel).emit( 'message',msgObj);
 
         });
-     // this.subClient.subscribe(channel+'');
+     // this.subClient.subscribe(channel+''); 
     }
     //채널 구독 취소
     unsubscribe(channel) {

@@ -78,6 +78,7 @@ exports.initConn = function(socket,io){
            
         
            redisCh.publish(msgObj.room_id,msgObj);
+           redisCh.publish('broadcast',msgObj);
 
            /**
             * message history를 redis 및 rdb에 기록하는 메소드 호출

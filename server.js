@@ -41,7 +41,7 @@ const io = require('socket.io')(server, {
 ws.init(io);
 
 //sse 초기화
-pushProcess(server);
+//pushProcess(server);
 
 server.listen(4000, function() {
   //console.log('listening on port 4000');

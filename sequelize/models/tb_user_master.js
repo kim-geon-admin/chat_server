@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(50),
             allowNull: false,
             unique: true,
+            primaryKey: true
         /*   여기까지    */
         },
         user_name: {
